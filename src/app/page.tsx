@@ -7,20 +7,19 @@ export default function HomePage() {
   const [text, setText] = useState("");
   const [qrUrl, setQrUrl] = useState("");
 
-  const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "";
-
   const generateQR = () => {
     if (!text.trim()) {
       alert("Matn kiriting!");
       return;
     }
 
-    setQrUrl(`${BASE_URL}/display/${encodeURIComponent(text)}`);
+    // ❗ RELATIVE URL
+    setQrUrl(`/display/${encodeURIComponent(text)}`);
   };
 
   return (
     <div style={{ textAlign: "center", padding: 40, fontFamily: "Arial" }}>
-      <h2>{process.env.NEXT_PUBLIC_APP_NAME}</h2>
+      <h2>QR Generator</h2>
 
       <input
         value={text}

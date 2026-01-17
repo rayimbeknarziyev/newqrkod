@@ -18,7 +18,6 @@ export default function DisplayPage({ params }: Props) {
         fontFamily: "Arial",
         background: "#f5f5f5",
         textAlign: "center",
-        padding: 20,
       }}
     >
       {text}
