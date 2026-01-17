@@ -1,11 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { QRCodeSVG } from "qrcode.react"; // <- Shu to‘g‘ri
+import { QRCodeSVG } from "qrcode.react";
 
 export default function HomePage() {
   const [text, setText] = useState("");
   const [qrUrl, setQrUrl] = useState("");
+
+  const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "";
 
   const generateQR = () => {
     if (!text.trim()) {
@@ -13,12 +15,13 @@ export default function HomePage() {
       return;
     }
 
-    setQrUrl(`/display/${encodeURIComponent(text)}`);
+    // Dynamic route URL
+    setQrUrl(`${BASE_URL}/display/${encodeURIComponent(text)}`);
   };
 
   return (
     <div style={{ textAlign: "center", padding: "40px", fontFamily: "Arial" }}>
-      <h2>Matn uchun QR yaratish</h2>
+      <h2>{process.env.NEXT_PUBLIC_APP_NAME} - QR Generator</h2>
       <input
         type="text"
         placeholder="Masalan: Salom"

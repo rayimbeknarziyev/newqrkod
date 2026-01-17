@@ -1,7 +1,10 @@
-import type { NextConfig } from "next";
+import { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  experimental: {
+    // @ts-expect-error: appDir hali types-ga kiritilmagan
+    appDir: true,
+  },
 };
 
 export default nextConfig;
