@@ -11,39 +11,35 @@ export default function HomePage() {
 
   const generateQR = () => {
     if (!text.trim()) {
-      alert("Iltimos, matn kiriting!");
+      alert("Matn kiriting!");
       return;
     }
 
-    // Dynamic route URL
     setQrUrl(`${BASE_URL}/display/${encodeURIComponent(text)}`);
   };
 
   return (
-    <div style={{ textAlign: "center", padding: "40px", fontFamily: "Arial" }}>
-      <h2>{process.env.NEXT_PUBLIC_APP_NAME} - QR Generator</h2>
+    <div style={{ textAlign: "center", padding: 40, fontFamily: "Arial" }}>
+      <h2>{process.env.NEXT_PUBLIC_APP_NAME}</h2>
+
       <input
-        type="text"
-        placeholder="Masalan: Salom"
         value={text}
         onChange={(e) => setText(e.target.value)}
-        style={{ padding: "8px", fontSize: "16px", width: "200px" }}
+        placeholder="Masalan: Salom"
+        style={{ padding: 8, fontSize: 16, width: 220 }}
       />
+
       <button
         onClick={generateQR}
-        style={{ padding: "8px 12px", marginLeft: "10px", fontSize: "16px" }}
+        style={{ padding: "8px 14px", marginLeft: 10, fontSize: 16 }}
       >
         QR yaratish
       </button>
 
       {qrUrl && (
-        <div style={{ marginTop: "20px" }}>
-          <QRCodeSVG value={qrUrl} width={200} height={200} />
-          <p>
-            <a href={qrUrl} target="_blank" rel="noopener noreferrer">
-              {qrUrl}
-            </a>
-          </p>
+        <div style={{ marginTop: 30 }}>
+          <QRCodeSVG value={qrUrl} size={220} />
+          <p>{qrUrl}</p>
         </div>
       )}
     </div>
